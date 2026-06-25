@@ -2,38 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  @apply box-border;
+/* Variables CSS personnalisées */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #64748b;
+  --danger-color: #dc2626;
+  --success-color: #16a34a;
+  --warning-color: #ea580c;
+  --info-color: #0284c7;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Mode sombre */
+[data-theme='dark'],
+html.dark {
+  --primary-color: #3b82f6;
+  --secondary-color: #cbd5e1;
+  --danger-color: #ef4444;
+  --success-color: #22c55e;
+  --warning-color: #f97316;
+  --info-color: #06b6d4;
+}
+
+/* Reset et styles globaux */
+* {
+  @apply transition-colors duration-300;
 }
 
 body {
-  @apply bg-gray-50 text-gray-900;
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white;
 }
 
-/* Scrollbar styling */
+/* Scrollbar personnalisée */
 ::-webkit-scrollbar {
-  @apply w-2 h-2;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded hover:bg-gray-600;
+  @apply bg-gray-400 dark:bg-gray-600 rounded-lg hover:bg-gray-500 dark:hover:bg-gray-500;
 }
 
-/* Loading animation */
-@keyframes spin {
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.animate-spin {
-  animation: spin 1s linear infinite;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Focus styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary-color;
+}
+
+/* Textes sélectionnables */
+::selection {
+  @apply bg-blue-500 dark:bg-blue-600 text-white;
+}
+
+/* Disable animations pour utilisateurs qui les désactivent */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    @apply !transition-none !animate-none;
+  }
 }
