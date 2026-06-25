@@ -1,0 +1,75 @@
+/**
+ * Constantes globales de l'application
+ */
+
+export const PAYMENT_METHODS = {
+  VODACOM_MPESA: 'VODACOM_MPESA',
+  AIRTEL_MONEY: 'AIRTEL_MONEY',
+  ORANGE_MONEY: 'ORANGE_MONEY',
+};
+
+export const PAYMENT_METHODS_DISPLAY = {
+  VODACOM_MPESA: 'Vodacom M-Pesa',
+  AIRTEL_MONEY: 'Airtel Money',
+  ORANGE_MONEY: 'Orange Money',
+};
+
+export const TRANSACTION_STATUS = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  PROCESSING: 'PROCESSING',
+  FAILED: 'FAILED',
+  REFUNDED: 'REFUNDED',
+};
+
+export const TRANSACTION_STATUS_DISPLAY = {
+  PENDING: 'En attente',
+  CONFIRMED: 'Confirmé',
+  PROCESSING: 'En traitement',
+  FAILED: 'Échoué',
+  REFUNDED: 'Remboursé',
+};
+
+export const TRANSACTION_TYPES = {
+  TUITION: 'TUITION',
+  ACCOMMODATION: 'ACCOMMODATION',
+  LIBRARY: 'LIBRARY',
+  SPORTS: 'SPORTS',
+  OTHER: 'OTHER',
+};
+
+export const USER_ROLES = {
+  STUDENT: 'STUDENT',
+  TEACHER: 'TEACHER',
+  ADMIN: 'ADMIN',
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  CASHIER: 'CASHIER',
+  LIBRARIAN: 'LIBRARIAN',
+};
+
+export const REPORT_TYPES = {
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  MONTHLY: 'MONTHLY',
+  QUARTERLY: 'QUARTERLY',
+  ANNUAL: 'ANNUAL',
+};
+
+export const CURRENCIES = {
+  FC: 'FC',
+  USD: 'USD',
+};
+
+export const DEFAULT_PAGE_SIZE = 20;
+export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+export default {
+  PAYMENT_METHODS,
+  PAYMENT_METHODS_DISPLAY,
+  TRANSACTION_STATUS,
+  TRANSACTION_STATUS_DISPLAY,
+  TRANSACTION_TYPES,
+  USER_ROLES,
+  REPORT_TYPES,
+  CURRENCIES,
+};

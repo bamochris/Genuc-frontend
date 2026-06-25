@@ -1,0 +1,66 @@
+/**
+ * Configuration des permissions RBAC
+ */
+
+export const PERMISSIONS = {
+  // Payment permissions
+  PAYMENT_VIEW: 'PAYMENT:VIEW',
+  PAYMENT_CREATE: 'PAYMENT:CREATE',
+  PAYMENT_EDIT: 'PAYMENT:EDIT',
+  PAYMENT_DELETE: 'PAYMENT:DELETE',
+  PAYMENT_REFUND: 'PAYMENT:REFUND',
+
+  // Report permissions
+  REPORT_VIEW: 'REPORT:VIEW',
+  REPORT_CREATE: 'REPORT:CREATE',
+  REPORT_EXPORT: 'REPORT:EXPORT',
+
+  // Admin permissions
+  ADMIN_USERS: 'ADMIN:USERS',
+  ADMIN_SETTINGS: 'ADMIN:SETTINGS',
+  ADMIN_SYSTEM: 'ADMIN:SYSTEM',
+
+  // Academic permissions
+  ACADEMIC_VIEW: 'ACADEMIC:VIEW',
+  ACADEMIC_EDIT: 'ACADEMIC:EDIT',
+};
+
+export const ROLE_PERMISSIONS = {
+  STUDENT: [
+    PERMISSIONS.PAYMENT_VIEW,
+    PERMISSIONS.REPORT_VIEW,
+    PERMISSIONS.ACADEMIC_VIEW,
+  ],
+  TEACHER: [
+    PERMISSIONS.ACADEMIC_VIEW,
+    PERMISSIONS.ACADEMIC_EDIT,
+    PERMISSIONS.REPORT_VIEW,
+  ],
+  CASHIER: [
+    PERMISSIONS.PAYMENT_VIEW,
+    PERMISSIONS.PAYMENT_CREATE,
+    PERMISSIONS.REPORT_VIEW,
+    PERMISSIONS.REPORT_CREATE,
+  ],
+  ADMIN: [
+    PERMISSIONS.PAYMENT_VIEW,
+    PERMISSIONS.PAYMENT_CREATE,
+    PERMISSIONS.REPORT_VIEW,
+    PERMISSIONS.REPORT_CREATE,
+    PERMISSIONS.REPORT_EXPORT,
+    PERMISSIONS.ADMIN_USERS,
+    PERMISSIONS.ADMIN_SETTINGS,
+  ],
+  SUPER_ADMIN: ['*'], // Toutes les permissions
+};
+
+export const hasPermission = (userRole, requiredPermission) => {
+  const permissions = ROLE_PERMISSIONS[userRole] || [];
+  return permissions.includes('*') || permissions.includes(requiredPermission);
+};
+
+export default {
+  PERMISSIONS,
+  ROLE_PERMISSIONS,
+  hasPermission,
+};
